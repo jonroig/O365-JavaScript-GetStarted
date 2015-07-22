@@ -5,29 +5,29 @@
 angular.module('routes', ['ngRoute', 'AdalAngular'])
 
 // Configure the routes.
-.config(['$routeProvider', '$httpProvider', 'adalAuthenticationServiceProvider', function($routeProvider, $httpProvider, adalProvider) {	
+.config(['$routeProvider', '$httpProvider', 'adalAuthenticationServiceProvider', function($routeProvider, $httpProvider, adalProvider) {
 	$routeProvider
 		.when('/', {
 			templateUrl: 'views/home/home.html',
 			controller: 'homeController',
 			controllerAs: 'home',
-    	requireADLogin: true 
+    	requireADLogin: true
 		})
 
-		.otherwise({ 
-			redirectTo: '/' 
+		.otherwise({
+			redirectTo: '/'
 		});
 
 	  // The endpoints here are resources for cross origin requests.
-	  var endpoints = {   
+	  var endpoints = {
 	    'https://outlook.office365.com': 'https://outlook.office365.com'
 	  };
-	  
+
 	  // Initialize the ADAL provider with your tenant name and clientID (found in the Azure Management Portal).
 	  adalProvider.init(
 	  {
-	    tenant: '{your_subdomain}.onmicrosoft.com',
-	    clientId: 'XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX',
+	    tenant: 'officecommander.onmicrosoft.com',
+	    clientId: '7d2eeb09-ffdf-4862-84c3-0c0db0d8a3aa',
 	    endpoints: endpoints,
 	    cacheLocation: 'localStorage' // Enable this for IE, as sessionStorage does not work for localhost.
 	  },
